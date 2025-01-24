@@ -1,0 +1,12 @@
+CREATE OR REPLACE FUNCTION test_out_param_multi(
+    IN p_input text,
+    OUT out_upper text,
+    OUT out_len int
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    out_upper := upper(p_input);
+    out_len := length(p_input);
+END;
+$$;
