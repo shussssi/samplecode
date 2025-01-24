@@ -1,0 +1,15 @@
+CREATE OR REPLACE FUNCTION test_args_srf(
+    IN p_limit int
+)
+RETURNS TABLE(x int, y int)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    i int;
+BEGIN
+    -- p_limit 個だけ (i, i*2) を返す
+    FOR i IN 1..p_limit LOOP
+        RETURN NEXT (i, i*2);
+    END LOOP;
+END;
+$$;
