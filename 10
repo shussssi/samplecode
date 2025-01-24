@@ -1,0 +1,12 @@
+CREATE OR REPLACE FUNCTION test_custom_type_func()
+RETURNS my_custom_type
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    result_record my_custom_type;
+BEGIN
+    result_record.col1 := 100;
+    result_record.col2 := 'custom';
+    RETURN result_record;
+END;
+$$;
