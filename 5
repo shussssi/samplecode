@@ -1,0 +1,10 @@
+CREATE OR REPLACE FUNCTION test_out_param_simple(
+    IN p_value int,
+    OUT result_text text
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    result_text := 'The number is ' || p_value::text;
+END;
+$$;
