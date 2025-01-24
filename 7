@@ -1,0 +1,21 @@
+CREATE OR REPLACE FUNCTION test_variadic_args(
+    VARIADIC p_nums int[]
+)
+RETURNS int
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    sum_val int := 0;
+    x int;
+BEGIN
+    IF p_nums IS NULL OR array_length(p_nums,1) IS NULL THEN
+        RETURN 0;
+    END IF;
+
+    FOREACH x IN ARRAY p_nums
+    LOOP
+        sum_val := sum_val + x;
+    END LOOP;
+    RETURN sum_val;
+END;
+$$;
