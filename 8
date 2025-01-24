@@ -1,0 +1,9 @@
+CREATE OR REPLACE PROCEDURE test_procedure_example(
+    IN p_text text
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RAISE NOTICE 'Test procedure called with: %', p_text;
+END;
+$$;
