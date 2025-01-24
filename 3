@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION test_noargs_srf()
+RETURNS TABLE(id int, val text)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN QUERY 
+    SELECT 1 AS id, 'Hello' AS val
+    UNION ALL
+    SELECT 2, 'World';
+END;
+$$;
