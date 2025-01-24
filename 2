@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION test_args_text(
+    IN p_text text,
+    IN p_num  int
+)
+RETURNS text
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    RETURN 'You said: ' || p_text || ' and number: ' || p_num::text;
+END;
+$$;
